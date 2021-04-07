@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <div th:replace="common/link :: header-css"/>
+    <link rel="stylesheet" th:href="@{'/css/header.css'}">
+    <link rel="stylesheet" th:href="@{'/css/footer.css'}">
+    <link rel="stylesheet" th:href="@{'/css/profile.css'}">
+    <link rel="stylesheet" th:href="@{'/css/adduser.css'}">
+    <style>
+        .form-group {
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+<div class="container-area">
+    <div th:replace="common/side-bar :: side-bar"></div>
+    <div class="container">
+        <div class="rp-show-wrapper">
+            <th:block sec:authorize="hasAuthority('STUDENT')">
+                <th:block th:include="user/user-student"></th:block>
+            </th:block>
+            <th:block sec:authorize="hasAuthority('MANAGER')">
+                <th:block th:include="user/user-manager"></th:block>
+            </th:block>
+            <th:block sec:authorize="hasAuthority('COORDINATOR')">
+                <th:block th:include="user/user-coordinator"></th:block>
+            </th:block>
+            <th:block sec:authorize="hasAuthority('GUEST')">
+                <th:block th:include="user/user-guest"></th:block>
+            </th:block>
+        </div>
+    </div>
+</div>
+<div th:replace="common/footer :: footer"/>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+<script>
+    $('.button.special a').click(function (e) {
+        e.preventDefault();
+        $('.discrible').toggle();
+        $('.rp-button').toggle();
+    })
+    if ($('input[type=date]').val() !== '') {
+        $('input[type=date]').css('color', '#ff8d00');
+    }
+</script>
+</body>
+</html>
+

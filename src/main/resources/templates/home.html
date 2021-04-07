@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:replace="common/link :: header-css"/>
+</head>
+<body>
+<div th:replace="common/header :: header"/>
+<link rel="stylesheet" th:href="@{/css/home.css}">
+<div class="container-area">
+    <div th:replace="common/side-bar :: side-bar"></div>
+    <div class="container-page">
+        <div class="title">
+            <h1 data-aos="fade-up-right">Welcome to <br> Magazine Contribution System</h1>
+        </div>
+    </div>
+</div>
+<div th:replace="common/footer :: footer"/>
+</body>
+</html>
